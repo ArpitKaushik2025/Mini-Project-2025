@@ -7,7 +7,8 @@ Each chat room can hold a max upto 10 players, who will join the room and after 
 ## Tech Stack
 Tech Stack used in this project is the popular MERN Stack.  
 
-Please read the respective `md` files of [backend](./backend/README.md) directory and [frontend](./frontend/README.md) directory, for project setup.
+To setup the project in local machine, `fork` and `clone` the repository and follow the steps in the respective `md` files of [backend](./backend/README.md) directory and [frontend](./frontend/README.md) directory.
+
 
 
 
