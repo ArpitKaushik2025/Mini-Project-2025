@@ -1,16 +1,31 @@
-# React + Vite
+## This is the frontend directory of the project.  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Follow the steps to setup the local machine:  
 
-Currently, two official plugins are available:
+### 1. Open terminal in root directory of the project.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+If backend was setup before, then you might be in the backend directory.  
+Run the following command:
+```bash
+cd ../frontend
+```
 
-## React Compiler
+If you are in root directory of the project, then run the following command:
+```bash
+cd frontend
+```
+ 
+### 2. Installing the dependencies
+```bash
+npm install
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 3. Setup the environment variables
+Create a `.env` file is the `frontend` directory.  
+Enter the environment variables in the file (ask for them from project admin).
 
-## Expanding the ESLint configuration
+### 4. Run the development server
+```bash
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
