@@ -7,7 +7,15 @@ Each chat room can hold a max upto 10 players, who will join the room and after 
 ## Tech Stack
 Tech Stack used in this project is the popular MERN Stack.  
 
-To setup the project in local machine, `fork` and `clone` the repository and follow the steps in the respective `md` files of [backend](./backend/README.md) directory and [frontend](./frontend/README.md) directory.
+To setup the project in local machine, `fork` and `clone` the repository  
+
+After `forking` the repository, run the following command to `clone` it in the local machine:
+```bash
+git clone https://github.com/ArpitKaushik2025/Mini-Project-2025.git
+```
+
+After `cloning`, follow the steps in the respective `md` files of [backend](./backend/README.md) directory and [frontend](./frontend/README.md) directory for further setup.
+
 
 
 
