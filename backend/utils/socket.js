@@ -3,7 +3,7 @@ import { Server } from "socket.io";
 export let io;
 
 export function setupSocket(server) {
-  const io = new Server(server, {
+  io = new Server(server, {
     cors: {
       origin: "*",
       methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],

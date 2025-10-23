@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 
-if (process.env.NODE_ENV != "PRODUCTION") {
+if (process.env.NODE_ENV !== "PRODUCTION") {
   dotenv.config();
 }
 
@@ -14,7 +14,7 @@ import { setupSocket } from "./utils/socket.js";
 import cors from "cors";
 const corsConfig = {
   origin: "*",
-  method: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
 };
 app.use(cors(corsConfig));
 
@@ -24,7 +24,7 @@ app.use(express.json());
 app.set("port", process.env.PORT);
 app.set("url", process.env.MONGO_URL);
 
-const PORT = app.get("port");
+const PORT = app.get("port") || 5050;
 const URL = app.get("url");
 
 const server = http.createServer(app);
