@@ -1,6 +1,6 @@
 ## This is the frontend directory of the project.  
 
-### Follow the steps to setup the local machine:  
+### Follow the steps to setup in the local machine:  
 
 ### 1. Open terminal in root directory of the project.  
 
@@ -21,7 +21,7 @@ npm install
 ```
 
 ### 3. Setup the environment variables
-Create a `.env` file is the `frontend` directory.  
+Create a `.env` file in the `frontend` directory.  
 Enter the environment variables in the file (ask for them from project admin).
 
 ### 4. Run the development server
