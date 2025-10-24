@@ -11,6 +11,8 @@ import mongoose from "mongoose";
 import http from "http";
 import { setupSocket } from "./utils/socket.js";
 
+import userRouter from "./routes/userRouter.js";
+
 import cors from "cors";
 const corsConfig = {
   origin: "*",
@@ -29,6 +31,8 @@ const URL = app.get("url");
 
 const server = http.createServer(app);
 setupSocket(server);
+
+app.use("/", userRouter);
 
 const start = () => {
   server.listen(PORT, () => {
