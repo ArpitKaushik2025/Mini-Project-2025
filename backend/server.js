@@ -30,7 +30,7 @@ const URL = app.get("url");
 const server = http.createServer(app);
 setupSocket(server);
 
-const start = async () => {
+const start = () => {
   server.listen(PORT, () => {
     console.log(`Server is listening to PORT ${PORT}`);
   });
