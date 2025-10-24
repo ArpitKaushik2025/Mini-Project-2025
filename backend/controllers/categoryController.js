@@ -26,7 +26,7 @@ export const addCategory = async (req, res) => {
     if (!newCategory) {
       console.log("Something went wrong! New Category could not be created!");
       return res.status(500).json({
-        message: "Something went wrong! New Category could not be created!",
+        message: "Internal Server Error!",
       });
     }
 
@@ -35,6 +35,6 @@ export const addCategory = async (req, res) => {
     res.status(200).json({ message: "New Category created successfully" });
   } catch (err) {
     console.error("Error during adding the category  : ", err.message);
-    res.status(500).send("Server Error!");
+    res.status(500).send("Internal Server Error!");
   }
 };

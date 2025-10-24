@@ -26,6 +26,13 @@ export const signup = async (req, res) => {
       gameHistory: [],
     });
 
+    if (!newUser) {
+      console.log("Something went wrong! New User could not be added!");
+      return res.status(500).json({
+        message: "Internal Server Error!",
+      });
+    }
+
     const result = await newUser.save();
 
     const token = jwt.sign(
@@ -37,7 +44,7 @@ export const signup = async (req, res) => {
     res.json(token, { username: username });
   } catch (err) {
     console.error("Error during signup : ", err.message);
-    res.status(500).send("Server Error!");
+    res.status(500).send("Internal Server Error!");
   }
 };
 
@@ -68,6 +75,6 @@ export const login = async (req, res) => {
     res.json({ token, username: user.username });
   } catch (err) {
     console.error("Error during login : ", err.message);
-    res.status(500).send("Server Error!");
+    res.status(500).send("Internal Server Error!");
   }
 };

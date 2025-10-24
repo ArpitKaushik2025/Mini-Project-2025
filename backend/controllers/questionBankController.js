@@ -23,11 +23,18 @@ export const addQuestion = async (req, res) => {
       answer: answer,
     });
 
+    if (!newQuestion) {
+      console.log("Something went wrong! New Question could not be added!");
+      return res.status(500).json({
+        message: "Internal Server Error",
+      });
+    }
+
     await newQuestion.save();
 
     res.status(200).json({ message: "Question added successfully!" });
   } catch (err) {
     console.error("Error during adding the question  : ", err.message);
-    res.status(500).send("Server Error!");
+    res.status(500).send("Internal Server Error!");
   }
 };
