@@ -12,6 +12,8 @@ import http from "http";
 import { setupSocket } from "./utils/socket.js";
 
 import userRouter from "./routes/userRouter.js";
+import questionBankRouter from "./routes/questionBankRouter.js";
+import categoryRouter from "./routes/categoryRouter.js";
 
 import cors from "cors";
 const corsConfig = {
@@ -32,7 +34,9 @@ const URL = app.get("url");
 const server = http.createServer(app);
 setupSocket(server);
 
-app.use("/", userRouter);
+app.use("/user", userRouter);
+app.use("/question", questionBankRouter);
+app.use("/category", categoryRouter);
 
 const start = () => {
   server.listen(PORT, () => {

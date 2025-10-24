@@ -7,6 +7,11 @@ export const questionBankSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Category",
   },
+  difficulty: {
+    type: String,
+    enum: ["Easy", "Medium", "Hard"],
+    required: true,
+  },
   question: {
     type: String,
     required: true,
