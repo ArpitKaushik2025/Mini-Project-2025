@@ -1,3 +1,5 @@
+import "./Chat.css"; // Write the vanilla CSS for chat in Chat.css if needed.
+
 function Chat() {
   return (
     <div class="bg-green-300 col-span-1">

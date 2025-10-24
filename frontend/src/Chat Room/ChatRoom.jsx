@@ -1,8 +1,6 @@
-import "./ChatRoom.css";
-
-import Quiz from "./Quiz";
-import Leaderboard from "./Leaderboard";
-import Chat from "./Chat";
+import Quiz from "./Quiz/Quiz.jsx";
+import Leaderboard from "./Leaderboard.jsx";
+import Chat from "./Chat.jsx";
 
 function ChatRoom() {
   return (

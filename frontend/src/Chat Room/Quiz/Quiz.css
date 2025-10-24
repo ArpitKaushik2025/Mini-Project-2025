@@ -1,0 +1,17 @@
+/* Hero Section (Timer & Player Count) */
+.timer,
+.player-count {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+/* Question Section (Category & Difficulty) */
+.category-difficulty,
+.question {
+  width: 100%;
+}
+
+.options {
+  width: 20rem;
+}
