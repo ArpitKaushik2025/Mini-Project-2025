@@ -11,10 +11,6 @@ export const gameHistorySchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Category",
   },
-  // roomId: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "Room",
-  // },
   playedAt: {
     type: Date,
     required: true,

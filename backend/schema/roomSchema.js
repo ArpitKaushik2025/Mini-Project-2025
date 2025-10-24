@@ -29,12 +29,6 @@ export const roomSchema = new Schema({
       },
     },
   ],
-  questions: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "QuestionBank",
-    },
-  ],
   winner: {
     type: Schema.Types.ObjectId,
     ref: "User",
