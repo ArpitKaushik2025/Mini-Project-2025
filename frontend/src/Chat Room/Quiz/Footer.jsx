@@ -1,5 +1,5 @@
 function Footer({ round }) {
-  return <div>Round {round} is starting</div>;
+  return <div className="quiz-footer">Round {round} is starting</div>;
 }
 
 export default Footer;

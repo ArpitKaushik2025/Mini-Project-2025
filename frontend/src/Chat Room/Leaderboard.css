@@ -1,0 +1,23 @@
+/* Scrollbar for the leaderboard list */
+div::-webkit-scrollbar {
+  width: 6px;
+}
+
+div::-webkit-scrollbar-thumb {
+  background-color: rgba(76, 29, 149, 0.6);
+  border-radius: 3px;
+}
+
+div::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Hide scrollbar while keeping scrolling */
+.leaderboard-scroll {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.leaderboard-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

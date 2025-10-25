@@ -1,17 +1,81 @@
-/* Hero Section (Timer & Player Count) */
+.quiz-bg {
+  background-attachment: fixed;
+}
+
+/* general quiz area layout */
+.quiz-card {
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* spacing tune-up for hero, category/difficulty, and question blocks */
+.hero-section {
+  margin-bottom: 3rem; /* gives timer/player space */
+}
+
+.category-difficulty {
+  margin-bottom: 2.5rem; /* spacing below category/difficulty row */
+}
+
+.quiz-question {
+  line-height: 1.2;
+  margin-bottom: 3rem;
+}
+
+.quiz-option {
+  margin-top: 0.25rem;
+  font-size: 1.5rem;
+}
+
+/* circular badges */
 .timer,
 .player-count {
-  height: 50px;
-  width: 50px;
+  height: 56px;
+  width: 56px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.65),
+    rgba(250, 204, 21, 0.28)
+  );
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.03);
+  font-weight: 700;
+  border: 1.5px solid rgba(0, 0, 0, 0.25);
 }
 
-/* Question Section (Category & Difficulty) */
-.category-difficulty,
-.question {
-  width: 100%;
+/* pill styling */
+.pill {
+  border-radius: 14px;
+  padding: 10px 18px;
+  border: 1.5px solid rgba(0, 0, 0, 0.22);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
 }
 
-.options {
-  width: 20rem;
+/* options */
+.quiz-option {
+  transition: transform 160ms ease, box-shadow 160ms ease,
+    background-color 160ms ease;
+  border-radius: 14px;
+  border: 1.5px solid rgba(0, 0, 0, 0.28);
+  padding: 18px 26px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+.quiz-option:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+}
+
+/* footer */
+.quiz-footer {
+  text-align: center;
+  padding: 16px 0;
+  color: rgba(0, 0, 0, 0.6);
 }

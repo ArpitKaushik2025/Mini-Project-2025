@@ -4,50 +4,49 @@ function Question() {
   const qno = 1;
   const question = "Who holds the record for the most Olympic gold medals?";
   const options = ["Carl Lewis", "Michael Phelps", "Usain Bolt", "Mark Spitz"];
+
   return (
-    <div className="flex flex-col items-center">
-      <div className="category-difficulty flex justify-between text-xl px-20">
-        <p className="rounded-2xl border p-4">
-          <strong>Category:</strong> {category}
+    <div className="w-full quiz-card flex flex-col items-center space-y-10">
+      <div className="category-difficulty w-full flex justify-between items-center px-6">
+        <p className="pill text-base md:text-lg">
+          <strong>Category:</strong>{" "}
+          <span className="font-normal">{category}</span>
         </p>
-        <p className="rounded-2xl border p-4">
-          <strong>Difficulty:</strong> {difficulty}
+        <p className="pill text-base md:text-lg">
+          <strong>Difficulty:</strong>{" "}
+          <span className="font-normal">{difficulty}</span>
         </p>
       </div>
 
-      <br />
-      <br />
-      <br />
-
-      <div className="text-4xl question content-center text-wrap px-20">
-        <p>
+      <div className="w-full px-6 text-center">
+        <h2 className="quiz-question text-2xl md:text-4xl font-semibold">
           <strong>Q.{qno}</strong> {question}
-        </p>
+        </h2>
       </div>
 
-      <br />
-      <br />
+      <div className="w-full px-6 grid grid-cols-2 gap-x-20 gap-y-8 text-center">
+        <div className="options">
+          <div className="quiz-option">
+            <strong className="mr-2">a.</strong> {options[0]}
+          </div>
+        </div>
 
-      <div className="grid grid-cols-2 grid-rows-2 text-center gap-x-60 gap-y-8 text-2xl">
         <div className="options">
-          <p className="rounded-2xl border p-4">
-            <strong>a.</strong> {options[0]}
-          </p>
+          <div className="quiz-option">
+            <strong className="mr-2">b.</strong> {options[1]}
+          </div>
         </div>
+
         <div className="options">
-          <p className="rounded-2xl border p-4">
-            <strong>b.</strong> {options[1]}
-          </p>
+          <div className="quiz-option">
+            <strong className="mr-2">c.</strong> {options[2]}
+          </div>
         </div>
+
         <div className="options">
-          <p className="rounded-2xl border p-4">
-            <strong>c.</strong> {options[2]}
-          </p>
-        </div>
-        <div className="options">
-          <p className="rounded-2xl border p-4">
-            <strong>d.</strong> {options[3]}
-          </p>
+          <div className="quiz-option">
+            <strong className="mr-2">d.</strong> {options[3]}
+          </div>
         </div>
       </div>
     </div>
