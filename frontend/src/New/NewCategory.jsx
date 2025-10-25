@@ -1,5 +1,7 @@
+import "./NewCategory.css";
+
 function NewCategory() {
-  return <></>;
+	return <></>;
 }
 
 export default NewCategory;
