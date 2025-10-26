@@ -6,7 +6,6 @@ import Dashboard from "./Dashboard/Dashboard.jsx";
 import ChatRoom from "./Chat Room/ChatRoom.jsx";
 
 import NewQuestion from "./New/NewQuestion";
-import NewCategory from "./New/NewCategory.jsx";
 
 function App() {
   return (
@@ -19,7 +18,6 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/chatroom" element={<ChatRoom />} />
           <Route path="/new/question" element={<NewQuestion />} />
-          <Route path="/new/category" element={<NewCategory />} />
         </Routes>
       </BrowserRouter>
     </>
