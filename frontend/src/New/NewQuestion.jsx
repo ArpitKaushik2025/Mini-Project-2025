@@ -2,14 +2,14 @@ import "./NewQuestion.css";
 
 function NewQuestion() {
   return (
-    <>
-      <div className="text-2xl subpixel-antialiased font-semibold tracking-widest decoration-wavy text-shadow-lg backdrop-blur-md Z-2S">
+    <div className="min-h-screen flex flex-col">
+      <div className="text-2xl subpixel-antialiased font-semibold tracking-widest decoration-wavy text-shadow-lg backdrop-blur-md Z-2">
         CREATE NEW QUESTION
       </div>
-      <div className="grid grid-cols-3 grid-rows-1 gap-1 h-screen">
+      <div className="flex-1 grid grid-cols-3 grid-rows-1 gap-1">
         {/* Left Pane */}
-        <div className="h-screen bg-yellow-100 col-span-1">
-          <div className="category-selector-dropdown mt-30">
+        <div className="bg-yellow-100 min-h-auto col-span-1">
+          <div className="category-selector-dropdown">
             <form className="max-w-md mx-auto">
               <label
                 for="categories"
@@ -99,8 +99,8 @@ function NewQuestion() {
           </button>
         </div>
         {/* Right Pane */}
-        <div className="options-form-fields col-span-2 bg-blue-200">
-          <div className="question outline-double rounded-xl m-8 p-4 mt-15">
+        <div className="options-form-fields size-auto col-span-2 bg-blue-200">
+          <div className="question outline-double rounded-xl mt-8 mx-4 p-2">
             <form className="max-w-3xl mx-auto">
               <div className="relative z-0 w-full mb-5 group">
                 <label
@@ -120,9 +120,9 @@ function NewQuestion() {
               </div>
             </form>
           </div>
-          <div className="options grid grid-cols-2 text-center">
+          <div className="options grid grid-cols-2 mt-4 text-center gap-x-8 gap-y-12 p-8">
             {/* Option - 1 */}
-            <div className="option-1 bg-green-300 outline-double rounded-xl m-12 p-8 pb-2">
+            <div className="option-1 bg-green-300 outline-double m-auto rounded-xl w-[80%] p-8">
               <input
                 type="text"
                 name="question"
@@ -141,7 +141,7 @@ function NewQuestion() {
             </div>
 
             {/* Option - 2 */}
-            <div className="option-2 bg-green-300 outline-double rounded-xl m-12 p-8">
+            <div className="option-2 bg-green-300 outline-double rounded-xl m-auto w-[80%] p-8">
               <input
                 type="text"
                 name="question"
@@ -160,7 +160,7 @@ function NewQuestion() {
             </div>
 
             {/* Option - 3 */}
-            <div className="option-3 bg-green-300 outline-double rounded-xl m-12 p-8">
+            <div className="option-3 bg-green-300 outline-double rounded-xl m-auto w-[80%] p-8">
               <input
                 type="text"
                 name="question"
@@ -179,7 +179,7 @@ function NewQuestion() {
             </div>
 
             {/* Option - 4 */}
-            <div className="option-4 bg-green-300 outline-double rounded-xl m-12 p-8">
+            <div className="option-4 bg-green-300 outline-double rounded-xl m-auto w-[80%] p-8">
               <input
                 type="text"
                 name="question"
@@ -202,7 +202,7 @@ function NewQuestion() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
