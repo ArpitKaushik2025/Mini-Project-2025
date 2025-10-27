@@ -3,14 +3,37 @@ import "./Dashboard.css";
 function Dashboard() {
   return (
     <div className=" text-white min-h-screen overflow-x-hidden leading-relaxed">
+      {/* Navbar */}
+      <header className="bg-[#4b3b8f] flex justify-between items-center px-6 lg:px-16 py-4 border-b border-[#ffffff33]">
+        <div className="text-2xl font-bold text-center md:text-left">
+          Quizbuzz
+        </div>
+
+        <nav className="hidden md:flex gap-8 mr-6 text-base lg:text-lg">
+          {["Username", "Icon", "High Score"].map((item, i) => (
+            <a
+              key={i}
+              href="#"
+              className="relative hover:text-[#f9d835] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#f9d835] hover:after:w-full after:transition-all after:duration-300"
+            >
+              {item}
+            </a>
+          ))}
+        </nav>
+        <div className="flex flex-wrap gap-3 mt-2 md:mt-0 justify-center">
+          <a
+            href="#"
+            className="px-4 py-2 rounded-md font-semibold border border-white text-sm md:text-base hover:bg-white hover:text-[#4b3b8f] transition-all duration-300"
+          >
+            Log In
+          </a>
+        </div>
+      </header>
+
       {/* Page Container */}
       <div className="bg-[#4b3b8f] flex flex-col md:flex-row min-h-screen mx-auto max-w-[1600px]">
         {/* Sidebar */}
         <aside className="w-full md:w-64 bg-[#1f1f1f] p-4 flex-shrink-0 md:min-h-screen">
-          <div className="text-2xl font-bold mb-4 text-center md:text-left">
-            Quizbuzz
-          </div>
-
           <h3 className="text-lg font-semibold mb-3 text-center md:text-left">
             History
           </h3>
@@ -34,37 +57,6 @@ function Dashboard() {
 
         {/* Main Content */}
         <div className="flex-1 flex flex-col">
-          {/* Navbar */}
-          <header className="flex flex-wrap justify-between md:justify-end items-center px-6 lg:px-16 py-4 border-b border-[#ffffff33]">
-            <nav className="hidden md:flex gap-8 mr-6 text-base lg:text-lg">
-              {["Discover Quiz", "About", "Feature", "Leaderboard"].map(
-                (item, i) => (
-                  <a
-                    key={i}
-                    href="#"
-                    className="relative hover:text-[#f9d835] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#f9d835] hover:after:w-full after:transition-all after:duration-300"
-                  >
-                    {item}
-                  </a>
-                )
-              )}
-            </nav>
-            <div className="flex flex-wrap gap-3 mt-2 md:mt-0 justify-center">
-              <a
-                href="#"
-                className="px-4 py-2 rounded-md font-semibold border border-white text-sm md:text-base hover:bg-white hover:text-[#4b3b8f] transition-all duration-300"
-              >
-                Sign In
-              </a>
-              <a
-                href="#"
-                className="px-4 py-2 rounded-md font-semibold border border-white text-sm md:text-base hover:bg-[#f9d835] hover:text-[#4b3b8f] transition-all duration-300"
-              >
-                Get Started
-              </a>
-            </div>
-          </header>
-
           {/* Hero */}
           <section className="text-center px-6 sm:px-12 lg:px-32 py-12 sm:py-16 lg:py-24 max-w-[1100px] mx-auto">
             <h1 className="text-[#ffef5e] font-extrabold tracking-[2px] text-4xl sm:text-6xl lg:text-7xl mb-2">
@@ -109,6 +101,14 @@ function Dashboard() {
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 lg:gap-8 max-w-[1300px] mx-auto">
               {[
                 ["🔬", "Science Technology"],
+                ["🔬", "Science Technology"],
+                ["🔬", "Science Technology"],
+                ["🔬", "Science Technology"],
+                ["🔬", "Science Technology"],
+                ["🔬", "Science Technology"],
+                ["🔬", "Science Technology"],
+                ["🔬", "Science Technology"],
+                ["🔬", "Science Technology"],
                 ["🌍", "Geography Quiz"],
                 ["➗", "Mathematics Quiz"],
                 ["🎭", "General Culture"],
@@ -125,13 +125,12 @@ function Dashboard() {
               ))}
             </div>
           </section>
-
-          {/* Footer */}
-          <footer className="text-center py-6 text-gray-300 text-xs sm:text-sm">
-            © 2025 Quizbuzz. All rights reserved.
-          </footer>
         </div>
       </div>
+      {/* Footer */}
+      <footer className="bg-[#4b3b8f] text-center py-6 text-gray-300 text-xs sm:text-sm">
+        © 2025 Quizbuzz. All rights reserved.
+      </footer>
     </div>
   );
 }

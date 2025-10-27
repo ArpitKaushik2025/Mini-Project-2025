@@ -1,62 +1,82 @@
-import "./Signup.css";
-
 function Signup() {
   return (
-    <>
-      <div className="body">
-        {/*  Main container for the sign-up form  */}
-        <div class="container">
-          {/*  Heading of the form  */}
-          <h2>Sign Up</h2>
+    <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-[#6a11cb] to-[#2575fc]">
+      {/* Main container */}
+      <div className="bg-white p-8 rounded-xl shadow-lg w-80">
+        <h2 className="text-center text-2xl font-semibold text-gray-800 mb-6">
+          Sign Up
+        </h2>
 
-          {/* Sign-up form starts  */}
-          <form action="#">
-            {/*  Username input   */}
-            <div class="input-box">
-              <label for="username">Username</label>
-              <input
-                type="text"
-                id="username"
-                placeholder="Choose a username"
-                required
-              />
-            </div>
+        <form action="#">
+          {/* Username input */}
+          <div className="mb-4">
+            <label
+              htmlFor="username"
+              className="block font-semibold text-gray-700 mb-1"
+            >
+              Username
+            </label>
+            <input
+              type="text"
+              id="username"
+              placeholder="Choose a username"
+              required
+              className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none focus:border-[#2575fc] transition"
+            />
+          </div>
 
-            {/*  Password input */}
-            <div class="input-box">
-              <label for="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                placeholder="Create a password"
-                required
-              />
-            </div>
+          {/* Password input */}
+          <div className="mb-4">
+            <label
+              htmlFor="password"
+              className="block font-semibold text-gray-700 mb-1"
+            >
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Create a password"
+              required
+              className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none focus:border-[#2575fc] transition"
+            />
+          </div>
 
-            {/*  Confirm password input */}
-            <div class="input-box">
-              <label for="confirm">Confirm Password</label>
-              <input
-                type="password"
-                id="confirm"
-                placeholder="Confirm your password"
-                required
-              />
-            </div>
+          {/* Confirm Password */}
+          <div className="mb-5">
+            <label
+              htmlFor="confirm"
+              className="block font-semibold text-gray-700 mb-1"
+            >
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              id="confirm"
+              placeholder="Confirm your password"
+              required
+              className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none focus:border-[#2575fc] transition"
+            />
+          </div>
 
-            {/* <!-- Sign-up button --> */}
-            <button type="submit" class="btn">
-              Sign Up
-            </button>
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full bg-[#2575fc] text-white py-2 rounded-md font-medium text-lg hover:bg-[#1b5edb] transition"
+          >
+            Sign Up
+          </button>
 
-            {/* <!-- Link to login page --> */}
-            <p class="link">
-              Already have an account? <a href="login.html">Login</a>
-            </p>
-          </form>
-        </div>
+          {/* Link */}
+          <p className="text-center text-gray-700 mt-3 text-sm">
+            Already have an account?{" "}
+            <a href="login.html" className="text-[#2575fc] hover:underline">
+              Login
+            </a>
+          </p>
+        </form>
       </div>
-    </>
+    </div>
   );
 }
 

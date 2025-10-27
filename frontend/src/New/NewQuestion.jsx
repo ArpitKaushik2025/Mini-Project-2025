@@ -1,5 +1,3 @@
-import "./NewQuestion.css";
-
 function NewQuestion() {
   return (
     <div className="min-h-screen flex flex-col">
