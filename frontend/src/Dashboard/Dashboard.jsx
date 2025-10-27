@@ -1,12 +1,35 @@
+import { useEffect, useState } from "react";
+
+import axios from "axios";
+
 import "./Dashboard.css";
 
 function Dashboard() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const result = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/verify/self`,
+          { withCredentials: true }
+        );
+
+        setUser(result.data);
+      } catch (err) {
+        console.error("Not Authenticated! : ", err.message);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
   return (
     <div className=" text-white min-h-screen overflow-x-hidden leading-relaxed">
       {/* Navbar */}
       <header className="bg-[#4b3b8f] flex justify-between items-center px-6 lg:px-16 py-4 border-b border-[#ffffff33]">
         <div className="text-2xl font-bold text-center md:text-left">
-          Quizbuzz
+          {user.username}
         </div>
 
         <nav className="hidden md:flex gap-8 mr-6 text-base lg:text-lg">

@@ -1,4 +1,37 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import axios from "axios";
+
 function Login() {
+  const navigate = useNavigate();
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = { username: username, password: password };
+
+    try {
+      const result = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/user/login`,
+        data,
+        { withCredentials: true }
+      );
+
+      setUsername("");
+      setPassword("");
+
+      if (result.status === 200) {
+        navigate("/dashboard");
+      }
+    } catch (err) {
+      console.error("Error during login : ", err.message);
+    }
+  };
+
   return (
     <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-[#6a11cb] to-[#2575fc]">
       {/* Main container */}
@@ -7,7 +40,7 @@ function Login() {
           Login
         </h2>
 
-        <form action="#">
+        <form onSubmit={handleFormSubmit}>
           {/* Username input */}
           <div className="mb-4">
             <label
@@ -20,6 +53,10 @@ function Login() {
               type="text"
               id="username"
               placeholder="Enter your username"
+              value={username}
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
               required
               className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none focus:border-[#2575fc] transition"
             />
@@ -37,6 +74,10 @@ function Login() {
               type="password"
               id="password"
               placeholder="Enter your password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               required
               className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none focus:border-[#2575fc] transition"
             />
