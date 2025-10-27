@@ -2,154 +2,133 @@ import "./Dashboard.css";
 
 function Dashboard() {
   return (
-    <div class="bg-[#4b3b8f] text-white overflow-x-hidden leading-relaxed">
-      {/* Page Container: Left sidebar + Main content */}
-      <div class="flex min-h-screen">
-        {/* Left Sidebar: History panel */}
+    <div className=" text-white min-h-screen overflow-x-hidden leading-relaxed">
+      {/* Page Container */}
+      <div className="bg-[#4b3b8f] flex flex-col md:flex-row min-h-screen mx-auto max-w-[1600px]">
+        {/* Sidebar */}
+        <aside className="w-full md:w-64 bg-[#1f1f1f] p-4 flex-shrink-0 md:min-h-screen">
+          <div className="text-2xl font-bold mb-4 text-center md:text-left">
+            Quizbuzz
+          </div>
 
-        <aside class="w-64 bg-[#1f1f1f] p-4 flex flex-col">
-          {/* Website name */}
-
-          <div class="text-2xl font-bold mb-6">Quizbuzz</div>
-
-          {/* History List */}
-
-          <h3 class="text-lg font-semibold mb-3">History</h3>
-          <ul class="flex flex-col gap-2 overflow-y-auto">
-            <li class="bg-[#4b3b8f] px-3 py-2 rounded hover:bg-[#f9d835] hover:text-[#4b3b8f] cursor-pointer transition-all">
-              Quiz 1 - 80%
-            </li>
-            <li class="bg-[#4b3b8f] px-3 py-2 rounded hover:bg-[#f9d835] hover:text-[#4b3b8f] cursor-pointer transition-all">
-              Quiz 2 - 100%
-            </li>
-            <li class="bg-[#4b3b8f] px-3 py-2 rounded hover:bg-[#f9d835] hover:text-[#4b3b8f] cursor-pointer transition-all">
-              Quiz 3 - 60%
-            </li>
-            <li class="bg-[#4b3b8f] px-3 py-2 rounded hover:bg-[#f9d835] hover:text-[#4b3b8f] cursor-pointer transition-all">
-              Quiz 4 - 90%
-            </li>
-            <li class="bg-[#4b3b8f] px-3 py-2 rounded hover:bg-[#f9d835] hover:text-[#4b3b8f] cursor-pointer transition-all">
-              Quiz 5 - 75%
-            </li>
+          <h3 className="text-lg font-semibold mb-3 text-center md:text-left">
+            History
+          </h3>
+          <ul className="flex flex-wrap md:flex-col gap-2 justify-center md:justify-start overflow-y-auto max-h-[300px] md:max-h-none">
+            {[
+              "Quiz 1 - 80%",
+              "Quiz 2 - 100%",
+              "Quiz 3 - 60%",
+              "Quiz 4 - 90%",
+              "Quiz 5 - 75%",
+            ].map((item, i) => (
+              <li
+                key={i}
+                className="bg-[#4b3b8f] px-3 py-2 rounded hover:bg-[#f9d835] hover:text-[#4b3b8f] cursor-pointer transition-all text-sm sm:text-base"
+              >
+                {item}
+              </li>
+            ))}
           </ul>
         </aside>
 
-        {/* Main Content Area */}
-
-        <div class="flex-1 flex flex-col">
+        {/* Main Content */}
+        <div className="flex-1 flex flex-col">
           {/* Navbar */}
-
-          <header class="flex justify-end items-center px-[6%] py-4 flex-wrap anim-down">
-            <nav class="hidden md:flex gap-6 mr-4">
-              <a
-                href="#"
-                class="relative hover:text-[#f9d835] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#f9d835] hover:after:w-full after:transition-all after:duration-300"
-              >
-                Discover Quiz
-              </a>
-              <a
-                href="#"
-                class="relative hover:text-[#f9d835] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#f9d835] hover:after:w-full after:transition-all after:duration-300"
-              >
-                About
-              </a>
-              <a
-                href="#"
-                class="relative hover:text-[#f9d835] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#f9d835] hover:after:w-full after:transition-all after:duration-300"
-              >
-                Feature
-              </a>
-              <a
-                href="#"
-                class="relative hover:text-[#f9d835] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#f9d835] hover:after:w-full after:transition-all after:duration-300"
-              >
-                Leaderboard
-              </a>
+          <header className="flex flex-wrap justify-between md:justify-end items-center px-6 lg:px-16 py-4 border-b border-[#ffffff33]">
+            <nav className="hidden md:flex gap-8 mr-6 text-base lg:text-lg">
+              {["Discover Quiz", "About", "Feature", "Leaderboard"].map(
+                (item, i) => (
+                  <a
+                    key={i}
+                    href="#"
+                    className="relative hover:text-[#f9d835] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#f9d835] hover:after:w-full after:transition-all after:duration-300"
+                  >
+                    {item}
+                  </a>
+                )
+              )}
             </nav>
-            <div class="flex gap-4 mt-2 md:mt-0">
+            <div className="flex flex-wrap gap-3 mt-2 md:mt-0 justify-center">
               <a
                 href="#"
-                class="px-4 py-2 rounded-md font-semibold border border-white text-white hover:bg-white hover:text-[#4b3b8f] transition-all duration-300"
+                className="px-4 py-2 rounded-md font-semibold border border-white text-sm md:text-base hover:bg-white hover:text-[#4b3b8f] transition-all duration-300"
               >
                 Sign In
               </a>
               <a
                 href="#"
-                class="px-4 py-2 rounded-md font-semibold border border-white text-white hover:bg-[#f9d835] hover:text-[#4b3b8f] transition-all duration-300"
+                className="px-4 py-2 rounded-md font-semibold border border-white text-sm md:text-base hover:bg-[#f9d835] hover:text-[#4b3b8f] transition-all duration-300"
               >
                 Get Started
               </a>
             </div>
           </header>
-          {/* Hero Section(Middle Part of the page with context) */}
-          <section class="text-center px-[8%] py-16 anim-up">
-            <h1 class="text-[#ffef5e] font-extrabold tracking-[3px] text-5xl md:text-6xl anim-bounce">
+
+          {/* Hero */}
+          <section className="text-center px-6 sm:px-12 lg:px-32 py-12 sm:py-16 lg:py-24 max-w-[1100px] mx-auto">
+            <h1 className="text-[#ffef5e] font-extrabold tracking-[2px] text-4xl sm:text-6xl lg:text-7xl mb-2">
               QUIZ TIME!
             </h1>
-            <h2 class="text-[#f9d835] text-2xl md:text-3xl my-4">
+            <h2 className="text-[#f9d835] text-xl sm:text-3xl lg:text-4xl my-3">
               Get Ready for an Exciting Quiz Adventure!
             </h2>
-            <p class="max-w-2xl mx-auto mb-8 text-[#eaeaea] opacity-0 anim-fade text-base md:text-lg">
+            <p className="max-w-2xl mx-auto mb-8 text-[#eaeaea] text-sm sm:text-lg lg:text-xl opacity-90">
               Train your brain with smart, scientifically backed games that
-              enhance various cognitive functions. Start improving your mental
-              fitness with us today.
+              enhance cognitive functions. Start improving your mental fitness
+              today.
             </p>
             <a
               href="#"
-              class="inline-block bg-[#f9d835] text-black font-semibold px-8 py-3 rounded-lg hover:scale-105 hover:bg-[#ffe43a] hover:shadow-lg transition-all duration-300"
+              className="inline-block bg-[#f9d835] text-black font-semibold px-8 py-3 rounded-lg hover:scale-105 hover:bg-[#ffe43a] hover:shadow-lg transition-all duration-300"
             >
               Start Quiz
             </a>
           </section>
-          {/* Category Section */}
-          <section class="bg-white text-[#222] px-[8%] py-12 rounded-t-[30px] mt-12 anim-up">
-            <h3 class="text-center text-2xl font-semibold mb-6">
+
+          {/* Category */}
+          <section className="bg-white text-[#222] px-6 sm:px-12 lg:px-24 py-10 rounded-t-[30px] mt-auto">
+            <h3 className="text-center text-xl sm:text-2xl font-semibold mb-6">
               Select a category
             </h3>
-            <div class="flex justify-center flex-wrap gap-4 mb-8">
-              <select class="px-4 py-2 rounded-md border border-gray-300 text-base transition-transform hover:scale-105 hover:border-[#f9d835] focus:outline-none">
+
+            <div className="flex flex-wrap justify-center gap-4 mb-10">
+              <select className="px-3 py-2 rounded-md border border-gray-300 text-sm md:text-base hover:border-[#f9d835] focus:outline-none">
                 <option>Popular Quiz</option>
                 <option>Latest</option>
                 <option>Top Rated</option>
               </select>
-              <select class="px-4 py-2 rounded-md border border-gray-300 text-base transition-transform hover:scale-105 hover:border-[#f9d835] focus:outline-none">
+              <select className="px-3 py-2 rounded-md border border-gray-300 text-sm md:text-base hover:border-[#f9d835] focus:outline-none">
                 <option>All Categories</option>
                 <option>Science</option>
                 <option>Geography</option>
                 <option>Math</option>
               </select>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 opacity-0 anim-fade">
-              <div class="bg-[#f6f6f6] rounded-xl p-8 text-center hover:bg-[#f9d835] hover:text-black transition-all duration-500 cursor-pointer hover:-translate-y-2 hover:scale-105 hover:shadow-xl">
-                <div class="text-4xl mb-4 anim-float">🔬</div>
-                <h4 class="font-semibold text-lg">Science Technology</h4>
-                <p>20 Quizzes</p>
-              </div>
-              <div class="bg-[#f6f6f6] rounded-xl p-8 text-center hover:bg-[#f9d835] hover:text-black transition-all duration-500 cursor-pointer hover:-translate-y-2 hover:scale-105 hover:shadow-xl">
-                <div class="text-4xl mb-4 anim-float">🌍</div>
-                <h4 class="font-semibold text-lg">Geography Quiz</h4>
-                <p>20 Quizzes</p>
-              </div>
-              <div class="bg-[#f6f6f6] rounded-xl p-8 text-center hover:bg-[#f9d835] hover:text-black transition-all duration-500 cursor-pointer hover:-translate-y-2 hover:scale-105 hover:shadow-xl">
-                <div class="text-4xl mb-4 anim-float">➗</div>
-                <h4 class="font-semibold text-lg">Mathematics Quiz</h4>
-                <p>20 Quizzes</p>
-              </div>
-              <div class="bg-[#f6f6f6] rounded-xl p-8 text-center hover:bg-[#f9d835] hover:text-black transition-all duration-500 cursor-pointer hover:-translate-y-2 hover:scale-105 hover:shadow-xl">
-                <div class="text-4xl mb-4 anim-float">🎭</div>
-                <h4 class="font-semibold text-lg">General Culture</h4>
-                <p>20 Quizzes</p>
-              </div>
-              <div class="bg-[#f6f6f6] rounded-xl p-8 text-center hover:bg-[#f9d835] hover:text-black transition-all duration-500 cursor-pointer hover:-translate-y-2 hover:scale-105 hover:shadow-xl">
-                <div class="text-4xl mb-4 anim-float">🖥</div>
-                <h4 class="font-semibold text-lg">Computer Science</h4>
-                <p>20 Quizzes</p>
-              </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 lg:gap-8 max-w-[1300px] mx-auto">
+              {[
+                ["🔬", "Science Technology"],
+                ["🌍", "Geography Quiz"],
+                ["➗", "Mathematics Quiz"],
+                ["🎭", "General Culture"],
+                ["🖥", "Computer Science"],
+              ].map(([icon, title], i) => (
+                <div
+                  key={i}
+                  className="bg-[#f6f6f6] rounded-xl p-6 sm:p-8 text-center hover:bg-[#f9d835] hover:text-black transition-all duration-500 cursor-pointer hover:-translate-y-1 hover:shadow-xl"
+                >
+                  <div className="text-3xl sm:text-4xl mb-3">{icon}</div>
+                  <h4 className="font-semibold text-sm sm:text-lg">{title}</h4>
+                  <p className="text-xs sm:text-sm">20 Quizzes</p>
+                </div>
+              ))}
             </div>
           </section>
-          {/* Footer Section */}
-          <footer class="text-center py-6 text-gray-300 text-sm anim-fade">
-            © 2025 Quezi. All rights reserved.
+
+          {/* Footer */}
+          <footer className="text-center py-6 text-gray-300 text-xs sm:text-sm">
+            © 2025 Quizbuzz. All rights reserved.
           </footer>
         </div>
       </div>
