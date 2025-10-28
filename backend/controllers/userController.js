@@ -42,14 +42,23 @@ export const signup = async (req, res) => {
     const result = await newUser.save();
 
     // Generate a token
-    const token = jwt.sign(
-      { id: result.insertedId },
-      process.env.JWT_SECRET_KEY,
-      { expiresIn: "24h" }
-    );
+    const token = jwt.sign({ id: result._id }, process.env.JWT_SECRET_KEY, {
+      expiresIn: "24h",
+    });
+
+    res.clearCookie("token"); // Clearing previous cookie
 
     // Send response with token and username
-    res.json(token, { username: username });
+    res
+      .cookie("token", token, {
+        httpOnly: true,
+        secure: false,
+        sameSite: "lax",
+        maxAge: 24 * 60 * 60 * 1000,
+      })
+      .json({
+        message: "Signed In successfully.",
+      });
   } catch (err) {
     console.error("Error during signup : ", err.message);
     res.status(500).send("Internal Server Error!");
@@ -86,8 +95,19 @@ export const login = async (req, res) => {
       expiresIn: "24h",
     });
 
+    res.clearCookie("token"); // Clearing previous cookie
+
     // Send the token & username in response
-    res.json({ token, username: user.username });
+    res
+      .cookie("token", token, {
+        httpOnly: true,
+        secure: false,
+        sameSite: "lax",
+        maxAge: 24 * 60 * 60 * 1000,
+      })
+      .json({
+        message: "Logged In successfully.",
+      });
   } catch (err) {
     console.error("Error during login : ", err.message);
     res.status(500).send("Internal Server Error!");

@@ -13,6 +13,7 @@ const app = express();
 import mongoose from "mongoose";
 import http from "http";
 import { setupSocket } from "./utils/socket.js";
+import cookieParser from "cookie-parser";
 
 // Importing the various routers to handle API requests
 import userRouter from "./routes/userRouter.js";
@@ -20,15 +21,18 @@ import questionBankRouter from "./routes/questionBankRouter.js";
 import categoryRouter from "./routes/categoryRouter.js";
 import gameHistoryRouter from "./routes/gameHistoryRouter.js";
 import roomRouter from "./routes/roomRouter.js";
+import fetchUsernameRouter from "./routes/fetchUsernameRouter.js";
 
 // Import and use CORS along with its configuration
 import cors from "cors";
 const corsConfig = {
-  origin: "*",
+  origin: "http://localhost:5173",
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  credentials: true,
 };
 app.use(cors(corsConfig));
 
+app.use(cookieParser()); // Parse the token in cookies
 app.use(express.urlencoded({ extended: true })); // Access URL Encoded Data
 app.use(express.json()); // To parse in JSON format before sending
 
@@ -50,6 +54,7 @@ app.use("/question", questionBankRouter);
 app.use("/category", categoryRouter);
 app.use("/history", gameHistoryRouter);
 app.use("/room", roomRouter);
+app.use("/verify", fetchUsernameRouter);
 
 // Start function to start server instance and connect to DB
 const start = () => {
