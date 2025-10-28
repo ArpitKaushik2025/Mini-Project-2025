@@ -1,14 +1,12 @@
-import "./NewQuestion.css";
-
 function NewQuestion() {
 	return (
-		<>
-			<div className="ps-4 text-2xl subpixel-antialiased font-semibold tracking-widest decoration-wavy text-shadow-lg backdrop-blur-md Z-2S dark:text-white dark:bg-gray-900 text-shadow-gray-500 backdrop-blur-md">
+		<div className="min-h-screen flex flex-col">
+			<div className="text-2xl subpixel-antialiased font-semibold tracking-widest decoration-wavy text-shadow-lg backdrop-blur-md Z-2S dark:text-white dark:bg-gray-900 text-shadow-gray-500 backdrop-blur-md">
 				CREATE NEW QUESTION
 			</div>
-			<div className="grid grid-cols-3 grid-rows-1 gap-1 h-screen backdrop-blur-2xl bg-gradient-to-r from-[#A9F1DF] to-[#FFBBBB] dark:bg-gradient-to-r dark:from-[#614385] dark:to-[#516395]">
+			<div className="flex-1 grid grid-cols-3 grid-rows-1 gap-1 px-12 py-12 backdrop-blur-2xl bg-gradient-to-r from-[#A9F1DF] to-[#FFBBBB] dark:bg-gradient-to-r dark:from-[#7663A8] dark:to-[#5E6FA5]">
 				{/* Left Pane */}
-				<div className="h-screen col-span-1 ">
+				<div className="col-span-1 min-h-auto">
 					<div className="category-selector-dropdown mt-30">
 						<form className="max-w-md mx-auto">
 							<label
@@ -82,7 +80,7 @@ function NewQuestion() {
 							</label>
 							<select
 								id="difficulty"
-								className="bg-gray-50 border border-gray-300 text-gray-900 text-m rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 darl:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+								className="bg-gray-50 border border-gray-300 text-gray-900 text-m rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 							>
 								<option className="text-green-800">🐣 Beginner</option>
 								<option className="text-yellow-600">🤓 Intermediate</option>
@@ -91,16 +89,10 @@ function NewQuestion() {
 						</form>
 						{/* Need logic to send user choice to DB */}
 					</div>
-					<button
-						type="submit"
-						className="w-screen rounded-full text-white bg-violet-700 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm w-full sm:w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-2"
-					>
-						Submit
-					</button>
 				</div>
 				{/* Right Pane */}
-				<div className="options-form-fields col-span-2">
-					<div className="question outline-double rounded-xl m-8 p-4 mt-15">
+				<div className="options-form-fields size-auto col-span-2">
+					<div className="question outline-double rounded-xl mt-8 mx-4 p-2 dark:outline-indigo-200">
 						<form className="max-w-3xl mx-auto">
 							<div className="relative z-0 w-full mb-5 group">
 								<label
@@ -113,16 +105,16 @@ function NewQuestion() {
 									type="text"
 									name="question"
 									id="question"
-									className="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+									className="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-500 appearance-none dark:text-white dark:border-gray-300 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
 									placeholder="Enter your Question"
 									required
 								/>
 							</div>
 						</form>
 					</div>
-					<div className="options grid grid-cols-2 text-center">
+					<div className="options grid grid-cols-2 mt-4 text-center gap-x-8 gap-y-12 p-8">
 						{/* Option - 1 */}
-						<div className="option-1 bg-green-300 outline-double rounded-xl m-12 p-8 h-4/7 w-9/12 pb-2">
+						<div className="option-1 bg-green-300 outline-double m-auto rounded-xl w-[80%] p-8 dark:bg-">
 							<input
 								type="text"
 								name="question"
@@ -141,7 +133,7 @@ function NewQuestion() {
 						</div>
 
 						{/* Option - 2 */}
-						<div className="option-2 bg-green-300 outline-double rounded-xl m-12 p-8 h-4/7 w-9/12">
+						<div className="option-2 bg-green-300 outline-double rounded-xl m-auto w-[80%] p-8">
 							<input
 								type="text"
 								name="question"
@@ -160,7 +152,7 @@ function NewQuestion() {
 						</div>
 
 						{/* Option - 3 */}
-						<div className="option-3 bg-green-300 outline-double rounded-xl m-12 p-8 h-4/7 w-9/12">
+						<div className="option-3 bg-green-300 outline-double rounded-xl m-auto w-[80%] p-8">
 							<input
 								type="text"
 								name="question"
@@ -179,7 +171,7 @@ function NewQuestion() {
 						</div>
 
 						{/* Option - 4 */}
-						<div className="option-4 bg-green-300 outline-double rounded-xl m-12 p-8 h-4/7 w-9/12">
+						<div className="option-4 bg-green-300 outline-double rounded-xl m-auto w-[80%] p-8">
 							<input
 								type="text"
 								name="question"
@@ -201,8 +193,14 @@ function NewQuestion() {
             But I don't know how to implement that, and this seems like it'll work too. */}
 					</div>
 				</div>
+				<button
+					type="submit"
+					className="col-span-3 rounded-full text-white bg-violet-700 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm w-full sm:w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+				>
+					Submit
+				</button>
 			</div>
-		</>
+		</div>
 	);
 }
 
