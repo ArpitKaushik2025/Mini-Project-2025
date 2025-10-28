@@ -25,12 +25,10 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className=" text-white min-h-screen overflow-x-hidden leading-relaxed">
+    <div className="text-white min-h-screen overflow-x-hidden leading-relaxed">
       {/* Navbar */}
       <header className="bg-[#4b3b8f] flex justify-between items-center px-6 lg:px-16 py-4 border-b border-[#ffffff33]">
-        <div className="text-2xl font-bold text-center md:text-left">
-          {user.username}
-        </div>
+        <div className="text-2xl font-bold text-center md:text-left"></div>
 
         <nav className="hidden md:flex gap-8 mr-6 text-base lg:text-lg">
           {["Username", "Icon", "High Score"].map((item, i) => (
@@ -54,13 +52,13 @@ function Dashboard() {
       </header>
 
       {/* Page Container */}
-      <div className="bg-[#4b3b8f] flex flex-col md:flex-row min-h-screen mx-auto max-w-[1600px]">
+      <div className="bg-[#4b3b8f] flex flex-col md:flex-row min-w-screen min-h-screen mx-auto max-w-[1600px]">
         {/* Sidebar */}
-        <aside className="w-full md:w-64 bg-[#1f1f1f] p-4 flex-shrink-0 md:min-h-screen">
+        <aside className="md:w-64 bg-[#1f1f1f] p-4 flex-shrink-0 md:min-h-screen">
           <h3 className="text-lg font-semibold mb-3 text-center md:text-left">
             History
           </h3>
-          <ul className="flex flex-wrap md:flex-col gap-2 justify-center md:justify-start overflow-y-auto max-h-[300px] md:max-h-none">
+          <ul className="flex flex-wrap md:flex-col gap-2 justify-center md:justify-start overflow-y-auto md:max-h-none">
             {[
               "Quiz 1 - 80%",
               "Quiz 2 - 100%",
@@ -81,7 +79,7 @@ function Dashboard() {
         {/* Main Content */}
         <div className="flex-1 flex flex-col">
           {/* Hero */}
-          <section className="text-center px-6 sm:px-12 lg:px-32 py-12 sm:py-16 lg:py-24 max-w-[1100px] mx-auto">
+          <section className="text-center px-6 sm:px-12 lg:px-32 py-12 sm:py-16 lg:py-24">
             <h1 className="text-[#ffef5e] font-extrabold tracking-[2px] text-4xl sm:text-6xl lg:text-7xl mb-2">
               QUIZ TIME!
             </h1>
@@ -121,7 +119,7 @@ function Dashboard() {
               </select>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 lg:gap-8 max-w-[1300px] mx-auto">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 lg:gap-8">
               {[
                 ["🔬", "Science Technology"],
                 ["🔬", "Science Technology"],
