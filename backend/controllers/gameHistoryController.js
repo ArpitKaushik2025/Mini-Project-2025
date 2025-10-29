@@ -33,6 +33,8 @@ export const addHistory = async (req, res) => {
 
     // Upload the game history object in DB
     await gameHistory.save();
+    user.gameHistory.push(gameHistory._id);
+    await user.save();
 
     // Send response with success message
     res.status(200).json({ message: "Game History updated successfully!" });

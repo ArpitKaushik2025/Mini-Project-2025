@@ -42,3 +42,14 @@ export const addCategory = async (req, res) => {
     res.status(500).send("Internal Server Error!");
   }
 };
+
+export const fetchCategories = async (req, res) => {
+  const categories = await Category.find({});
+
+  if (!categories) {
+    console.log("Error Occurred in fetching the categories from DB!");
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+
+  res.json(categories);
+};
