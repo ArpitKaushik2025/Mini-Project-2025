@@ -6,6 +6,8 @@ import "./Dashboard.css";
 
 function Dashboard() {
   const [user, setUser] = useState(null);
+  const [categories, setCategories] = useState(null);
+  const [highScore, setHighScore] = useState(0);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -15,6 +17,12 @@ function Dashboard() {
           { withCredentials: true }
         );
 
+        const score = result.data.gameHistory.map((val) => val.score);
+
+        console.log(result.data.gameHistory);
+
+        setHighScore(Math.max(...score));
+
         setUser(result.data);
       } catch (err) {
         console.error("Not Authenticated! : ", err.message);
@@ -22,24 +30,41 @@ function Dashboard() {
     };
 
     fetchUser();
+
+    const fetchCategory = async () => {
+      try {
+        const result = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/category/new`
+        );
+
+        setCategories(result.data);
+      } catch (err) {
+        console.error("Error in fetching categories! : ", err.message);
+      }
+    };
+
+    fetchCategory();
   }, []);
 
   return (
     <div className="text-white min-h-screen overflow-x-hidden leading-relaxed">
       {/* Navbar */}
       <header className="bg-[#4b3b8f] flex justify-between items-center px-6 lg:px-16 py-4 border-b border-[#ffffff33]">
-        <div className="text-2xl font-bold text-center md:text-left"></div>
+        <div className="text-2xl font-bold text-center md:text-left">
+          QuizBuzz
+        </div>
 
         <nav className="hidden md:flex gap-8 mr-6 text-base lg:text-lg">
-          {["Username", "Icon", "High Score"].map((item, i) => (
-            <a
-              key={i}
-              href="#"
-              className="relative hover:text-[#f9d835] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#f9d835] hover:after:w-full after:transition-all after:duration-300"
-            >
-              {item}
-            </a>
-          ))}
+          {user &&
+            [user.username, "Icon", highScore].map((item, i) => (
+              <a
+                key={i}
+                href="#"
+                className="relative hover:text-[#f9d835] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#f9d835] hover:after:w-full after:transition-all after:duration-300"
+              >
+                {item}
+              </a>
+            ))}
         </nav>
         <div className="flex flex-wrap gap-3 mt-2 md:mt-0 justify-center">
           <a
@@ -59,20 +84,30 @@ function Dashboard() {
             History
           </h3>
           <ul className="flex flex-wrap md:flex-col gap-2 justify-center md:justify-start overflow-y-auto md:max-h-none">
-            {[
-              "Quiz 1 - 80%",
-              "Quiz 2 - 100%",
-              "Quiz 3 - 60%",
-              "Quiz 4 - 90%",
-              "Quiz 5 - 75%",
-            ].map((item, i) => (
-              <li
-                key={i}
-                className="bg-[#4b3b8f] px-3 py-2 rounded hover:bg-[#f9d835] hover:text-[#4b3b8f] cursor-pointer transition-all text-sm sm:text-base"
-              >
-                {item}
-              </li>
-            ))}
+            <li className="bg-[#4b3b8f] flex justify-between px-3 py-2 rounded hover:bg-[#f9d835] hover:text-[#4b3b8f] cursor-pointer transition-all text-sm sm:text-base">
+              <div>Category</div> <div>Played At</div> <div>Score</div>
+            </li>
+            {user &&
+              user.gameHistory.map(({ category, playedAt, score }, i) => (
+                <li
+                  key={i}
+                  className="bg-[#4b3b8f] flex justify-between px-3 py-2 rounded hover:bg-[#f9d835] hover:text-[#4b3b8f] cursor-pointer transition-all text-sm sm:text-base"
+                >
+                  <div>{category.name}</div>
+                  <div className="flex flex-col">
+                    <span>
+                      {new Date(playedAt).toLocaleDateString("en-IN")}
+                    </span>
+                    <span>
+                      {new Date(playedAt).toLocaleTimeString("en-IN", {
+                        timeZone: "Asia/Kolkata",
+                        hour12: false,
+                      })}
+                    </span>
+                  </div>
+                  <div>{score}</div>
+                </li>
+              ))}
           </ul>
         </aside>
 
@@ -120,30 +155,19 @@ function Dashboard() {
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 lg:gap-8">
-              {[
-                ["🔬", "Science Technology"],
-                ["🔬", "Science Technology"],
-                ["🔬", "Science Technology"],
-                ["🔬", "Science Technology"],
-                ["🔬", "Science Technology"],
-                ["🔬", "Science Technology"],
-                ["🔬", "Science Technology"],
-                ["🔬", "Science Technology"],
-                ["🔬", "Science Technology"],
-                ["🌍", "Geography Quiz"],
-                ["➗", "Mathematics Quiz"],
-                ["🎭", "General Culture"],
-                ["🖥", "Computer Science"],
-              ].map(([icon, title], i) => (
-                <div
-                  key={i}
-                  className="bg-[#f6f6f6] rounded-xl p-6 sm:p-8 text-center hover:bg-[#f9d835] hover:text-black transition-all duration-500 cursor-pointer hover:-translate-y-1 hover:shadow-xl"
-                >
-                  <div className="text-3xl sm:text-4xl mb-3">{icon}</div>
-                  <h4 className="font-semibold text-sm sm:text-lg">{title}</h4>
-                  <p className="text-xs sm:text-sm">20 Quizzes</p>
-                </div>
-              ))}
+              {categories &&
+                categories.map(({ name, description }, i) => (
+                  <div
+                    key={i}
+                    className="bg-[#f6f6f6] rounded-xl p-6 sm:p-8 text-center hover:bg-[#f9d835] hover:text-black transition-all duration-500 cursor-pointer hover:-translate-y-1 hover:shadow-xl"
+                  >
+                    <div className="text-3xl sm:text-4xl mb-3">{name}</div>
+                    <h4 className="font-semibold text-sm sm:text-lg">{name}</h4>
+                    <h4 className="font-semibold text-sm sm:text-lg">
+                      {description}
+                    </h4>
+                  </div>
+                ))}
             </div>
           </section>
         </div>

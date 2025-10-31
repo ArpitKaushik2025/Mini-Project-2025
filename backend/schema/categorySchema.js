@@ -10,5 +10,6 @@ export const categorySchema = new Schema({
   },
   description: {
     type: String,
+    default: null,
   },
 });
