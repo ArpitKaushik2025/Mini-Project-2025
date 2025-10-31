@@ -84,15 +84,28 @@ function Dashboard() {
             History
           </h3>
           <ul className="flex flex-wrap md:flex-col gap-2 justify-center md:justify-start overflow-y-auto md:max-h-none">
+            <li className="bg-[#4b3b8f] flex justify-between px-3 py-2 rounded hover:bg-[#f9d835] hover:text-[#4b3b8f] cursor-pointer transition-all text-sm sm:text-base">
+              <div>Category</div> <div>Played At</div> <div>Score</div>
+            </li>
             {user &&
               user.gameHistory.map(({ category, playedAt, score }, i) => (
                 <li
                   key={i}
-                  className="bg-[#4b3b8f] px-3 py-2 rounded hover:bg-[#f9d835] hover:text-[#4b3b8f] cursor-pointer transition-all text-sm sm:text-base"
+                  className="bg-[#4b3b8f] flex justify-between px-3 py-2 rounded hover:bg-[#f9d835] hover:text-[#4b3b8f] cursor-pointer transition-all text-sm sm:text-base"
                 >
-                  {category.name}
-                  {playedAt}
-                  {score}
+                  <div>{category.name}</div>
+                  <div className="flex flex-col">
+                    <span>
+                      {new Date(playedAt).toLocaleDateString("en-IN")}
+                    </span>
+                    <span>
+                      {new Date(playedAt).toLocaleTimeString("en-IN", {
+                        timeZone: "Asia/Kolkata",
+                        hour12: false,
+                      })}
+                    </span>
+                  </div>
+                  <div>{score}</div>
                 </li>
               ))}
           </ul>
