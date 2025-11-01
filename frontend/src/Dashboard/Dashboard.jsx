@@ -169,15 +169,11 @@ function Dashboard() {
 
             <div className="flex flex-wrap justify-center gap-4 mb-10">
               <select className="px-3 py-2 rounded-md border border-gray-300 text-sm md:text-base hover:border-[#f9d835] focus:outline-none">
-                <option>Popular Quiz</option>
-                <option>Latest</option>
-                <option>Top Rated</option>
-              </select>
-              <select className="px-3 py-2 rounded-md border border-gray-300 text-sm md:text-base hover:border-[#f9d835] focus:outline-none">
                 <option>All Categories</option>
-                <option>Science</option>
-                <option>Geography</option>
-                <option>Math</option>
+                {categories &&
+                  categories.map(({ name }, i) => (
+                    <option key={i}>{name}</option>
+                  ))}
               </select>
             </div>
 

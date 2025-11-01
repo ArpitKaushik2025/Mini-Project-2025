@@ -9,22 +9,17 @@ export const questionBankSchema = new Schema({
   },
   difficulty: {
     type: String,
-    enum: ["Easy", "Medium", "Hard"],
+    enum: ["Beginner", "Intermediate", "Expert"],
     required: true,
   },
   question: {
     type: String,
     required: true,
-    unique: true,
   },
   options: [
     {
-      type: String,
-      required: true,
+      value: { type: String, required: true },
+      answer: { type: Boolean, required: true },
     },
   ],
-  answer: {
-    type: String,
-    required: true,
-  },
 });
