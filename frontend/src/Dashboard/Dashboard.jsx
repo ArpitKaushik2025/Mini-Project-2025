@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import axios from "axios";
 
@@ -8,6 +9,15 @@ function Dashboard() {
   const [user, setUser] = useState(null);
   const [categories, setCategories] = useState(null);
   const [highScore, setHighScore] = useState(0);
+
+  const handleLogout = async () => {
+    const result = await axios.post(
+      `${import.meta.env.VITE_BACKEND_URL}/user/logout`,
+      {},
+      { withCredentials: true }
+    );
+    setUser(null);
+  };
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -66,14 +76,26 @@ function Dashboard() {
               </a>
             ))}
         </nav>
-        <div className="flex flex-wrap gap-3 mt-2 md:mt-0 justify-center">
-          <a
-            href="#"
-            className="px-4 py-2 rounded-md font-semibold border border-white text-sm md:text-base hover:bg-white hover:text-[#4b3b8f] transition-all duration-300"
-          >
-            Log In
-          </a>
-        </div>
+        {user ? (
+          <div>
+            <Link
+              onClick={handleLogout}
+              to="#"
+              className="px-4 py-2 rounded-md font-semibold border border-white text-sm md:text-base hover:bg-white hover:text-[#4b3b8f] transition-all duration-300"
+            >
+              Log Out
+            </Link>
+          </div>
+        ) : (
+          <div className="flex flex-wrap gap-3 mt-2 md:mt-0 justify-center">
+            <Link
+              to="/login"
+              className="px-4 py-2 rounded-md font-semibold border border-white text-sm md:text-base hover:bg-white hover:text-[#4b3b8f] transition-all duration-300"
+            >
+              Log In
+            </Link>
+          </div>
+        )}
       </header>
 
       {/* Page Container */}
@@ -87,7 +109,7 @@ function Dashboard() {
             <li className="bg-[#4b3b8f] flex justify-between px-3 py-2 rounded hover:bg-[#f9d835] hover:text-[#4b3b8f] cursor-pointer transition-all text-sm sm:text-base">
               <div>Category</div> <div>Played At</div> <div>Score</div>
             </li>
-            {user &&
+            {user ? (
               user.gameHistory.map(({ category, playedAt, score }, i) => (
                 <li
                   key={i}
@@ -107,7 +129,12 @@ function Dashboard() {
                   </div>
                   <div>{score}</div>
                 </li>
-              ))}
+              ))
+            ) : (
+              <li className="bg-[#4b3b8f] flex justify-between px-3 py-2 rounded hover:bg-[#f9d835] hover:text-[#4b3b8f] cursor-pointer transition-all text-sm sm:text-base">
+                Login to see history
+              </li>
+            )}
           </ul>
         </aside>
 

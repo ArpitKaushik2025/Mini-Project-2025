@@ -52,8 +52,8 @@ export const signup = async (req, res) => {
     res
       .cookie("token", token, {
         httpOnly: true,
-        secure: false,
-        sameSite: "lax",
+        secure: process.env.NODE_ENV === "PRODUCTION",
+        sameSite: "none",
         maxAge: 24 * 60 * 60 * 1000,
       })
       .json({
@@ -101,8 +101,8 @@ export const login = async (req, res) => {
     res
       .cookie("token", token, {
         httpOnly: true,
-        secure: false,
-        sameSite: "lax",
+        secure: process.env.NODE_ENV === "PRODUCTION",
+        sameSite: "none",
         maxAge: 24 * 60 * 60 * 1000,
       })
       .json({
@@ -112,4 +112,13 @@ export const login = async (req, res) => {
     console.error("Error during login : ", err.message);
     res.status(500).send("Internal Server Error!");
   }
+};
+
+export const logout = (req, res) => {
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "PRODUCTION",
+    sameSite: "none",
+  });
+  res.status(200).json({ message: "Logged Out Successfully!" });
 };
