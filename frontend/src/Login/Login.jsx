@@ -58,7 +58,7 @@ function Login() {
 								setUsername(e.target.value);
 							}}
 							required
-							className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none focus:border-[#2575fc] transition"
+							className="w-full px-3 py-2 border border-gray-300 dark:border-[#a87fff60] rounded-md outline-none focus:border-[#2575fc] transition"
 						/>
 					</div>
 
@@ -79,7 +79,7 @@ function Login() {
 								setPassword(e.target.value);
 							}}
 							required
-							className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none focus:border-[#2575fc] transition"
+							className="w-full px-3 py-2 border border-gray-300 dark:border-[#a87fff60] rounded-md outline-none focus:border-[#2575fc] transition"
 						/>
 					</div>
 
